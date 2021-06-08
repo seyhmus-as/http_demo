@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:http_demo/models/flat.dart';
+import 'package:http_demo/widgets/flat_list_row.dart';
 
 // ignore: must_be_immutable
 class FlatListWidget extends StatefulWidget{
@@ -23,13 +24,19 @@ class FlatListWidgetState extends State<FlatListWidget> {
   }
 
   Widget buildFlatList(BuildContext context) {
-    return Expanded(
-      child: GridView.count(
-        crossAxisCount: 2,
-        children: List.generate(widget.flats.length, (index){
-              return Text(widget.flats[index].apartmentId.toString(), style: TextStyle(fontSize: 45),);
-        }),
-      ),
+    return Column(
+      children: [
+        SizedBox(height: 10,),
+        SizedBox(
+          height: 500,
+          child: GridView.count(
+            crossAxisCount: 2,
+            children: List.generate(widget.flats.length, (index){
+                  return FlatListRowWidget(widget.flats[index]);
+            }),
+          ),
+        ),
+      ],
     );
   }
 
