@@ -28,5 +28,4 @@ class FlatListRowWidget extends StatelessWidget{//less olması demek ekranda sta
       ),
     );
   }
-
 }

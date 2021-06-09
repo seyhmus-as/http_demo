@@ -1,10 +1,11 @@
 import 'package:http/http.dart' as http;
+import 'package:http_demo/data/api/Url_api.dart';
 
 class ApartmentApi{
   static Future getApartments(){
-    return http.get(Uri.parse('https://02260eb439f3.ngrok.io/api/apartments/getall'));
+    return http.get(Uri.parse(Url.localHost + '/apartments/getall'));
   }
   static Future getApartmentsByFlatId(int flatId){
-    return http.get(Uri.parse('https://02260eb439f3.ngrok.io/api/flats/getbyid?flatId=$flatId'));
+    return http.get(Uri.parse(Url.localHost + '/flats/getbyid?flatId=$flatId'));
   }
 }

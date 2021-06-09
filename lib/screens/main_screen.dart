@@ -24,6 +24,7 @@ class MainScreenState extends State<StatefulWidget>  {
   @override
   void initState() {
     getApartmentsFromApi();
+    getFlats();
     super.initState();
   }
 
@@ -89,6 +90,14 @@ class MainScreenState extends State<StatefulWidget>  {
 
   void getFlatsByApartmentId(Apartment apartment) {
     ApartmentApi.getApartmentsByFlatId(apartment.apartmentId).then((response) {
+      setState(() {
+        Iterable list = json.decode(utf8.decode(response.bodyBytes))["data"];
+        this.flats = list.map((flat) => Flat.fromJson(flat)).toList();
+      });
+    });
+  }
+  void getFlats() {
+    FlatApi.getFlats().then((response) {
       setState(() {
         Iterable list = json.decode(utf8.decode(response.bodyBytes))["data"];
         this.flats = list.map((flat) => Flat.fromJson(flat)).toList();

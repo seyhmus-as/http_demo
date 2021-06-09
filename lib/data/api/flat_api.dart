@@ -1,7 +1,8 @@
 import 'package:http/http.dart' as http;
+import 'package:http_demo/data/api/Url_api.dart';
 
-class FlatApi{
+class FlatApi {
   static Future getFlats(){
-    return http.get(Uri.parse('https://02260eb439f3.ngrok.io/api/flats/getall'));
+    return http.get(Uri.parse(Url.localHost+'/flats/getall'));
   }
 }
